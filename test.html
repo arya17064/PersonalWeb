@@ -13,7 +13,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Arya Project - Contact Me1</title>
+    <title>Arya Project - Contact Me</title>
 
     <meta name="description" content="" />
 
@@ -99,7 +99,7 @@
       >
         <div class="col-6">
           <div class="card mb-4">
-            <h5 class="card-header">Get In Touch</h5>
+            <h5 class="card-header">Create Blog</h5>
             <div class="card-body">
               <div
                 id="notification"
@@ -108,62 +108,41 @@
               >
                 Pesan berhasil dikirim!
               </div>
-              <form id="contactForm" action="#" method="POST">
+              <form
+                id="create-blog"
+                action="#"
+                method="POST"
+                enctype="multipart/form-data"
+              >
                 <div class="mb-3">
                   <div class="form-floating">
                     <input
                       type="text"
                       class="form-control"
-                      id="name"
-                      placeholder="Arya Afdhil Fikri"
+                      id="title"
+                      placeholder="Input Title"
                     />
-                    <label for="name">Nama</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="aryaafdhil2002@gmail.com"
-                    />
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="subject"
-                      placeholder="text"
-                    />
-                    <label for="subject">subject</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <select class="form-select" id="skill">
-                      <option selected disabled>Select Skill</option>
-                      <option value="frontend">Frontend</option>
-                      <option value="backend">Backend</option>
-                    </select>
-                    <label for="skill">Skill</label>
+                    <label for="title">Title</label>
                   </div>
                 </div>
 
                 <div class="mb-3">
                   <div class="form-floating">
                     <textarea
+                      id="content"
                       class="form-control"
-                      id="message"
-                      placeholder="Tulis pesan Anda di sini"
+                      placeholder="Input Content"
+                      aria-label="Input Content"
+                      aria-describedby="basic-icon-default-message2"
                     ></textarea>
-                    <label for="message">Message</label>
+                    <label for="email">Content</label>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="form-floating">
+                    <input type="file" class="form-control" id="image" />
+                    <label for="image">Upload Image</label>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -195,12 +174,5 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="assets/js/contact-form.js"></script>
-    <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", handleContactFormSubmit);
-    </script>
   </body>
 </html>
