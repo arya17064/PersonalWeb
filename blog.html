@@ -60,6 +60,26 @@
     <script src="assets/js/config.js"></script>
   </head>
   <body>
+    <div
+      id="notification"
+      class="alert alert-success"
+      style="
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1031;
+        transition: opacity 0.5s ease-in-out;
+      "
+    >
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        onclick="hideNotification()"
+      ></button>
+      <span id="notification-message">Upload berhasil!</span>
+    </div>
     <!-- Navbar Menu -->
     <div class="mb-5">
       <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
@@ -93,28 +113,137 @@
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
-      <div
-        class="layout-container d-flex justify-content-center"
-        style="margin-top: 20px"
-      >
-        <div class="col-6">
-          <div class="card mb-4">
-            <h5 class="card-header">Create Blog</h5>
-            <div class="card-body">
-              <div
-                id="notification"
-                class="alert alert-success d-none"
-                role="alert"
-              >
-                Pesan berhasil dikirim!
+      <div class="layout-container">
+        <div class="col card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <h5 class="mb-0">Blog Post</h5>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#basicModal"
+            >
+              <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Create
+              Blog
+            </button>
+          </div>
+          <div class="col-md" id="blogList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Blog</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="saveEditBlog(event)">
+              <input type="hidden" id="edit-index" />
+              <div class="mb-3">
+                <label for="edit-title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-title"
+                  required
+                />
               </div>
-              <form
-                id="create-blog"
-                action="#"
-                method="POST"
-                enctype="multipart/form-data"
-              >
-                <div class="mb-3">
+              <div class="mb-3">
+                <label for="edit-content" class="form-label">Content</label>
+                <textarea
+                  class="form-control"
+                  id="edit-content"
+                  required
+                ></textarea>
+              </div>
+              <div class="row">
+                <div class="col mb-3">
+                  <div class="form-floating">
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="edit-image"
+                      placeholder="Edit Image"
+                    />
+                    <label for="image">Image</label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Deletion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this blog?</p>
+            <input type="hidden" id="delete-index" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" onclick="deleteBlog()">
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Add -->
+    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="card-header">Create Blog</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              id="create-blog"
+              onsubmit="addBlog(event)"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="row">
+                <div class="col mb-3">
                   <div class="form-floating">
                     <input
                       type="text"
@@ -125,8 +254,10 @@
                     <label for="title">Title</label>
                   </div>
                 </div>
+              </div>
 
-                <div class="mb-3">
+              <div class="row">
+                <div class="col mb-3">
                   <div class="form-floating">
                     <textarea
                       id="content"
@@ -138,16 +269,27 @@
                     <label for="email">Content</label>
                   </div>
                 </div>
+              </div>
 
-                <div class="mb-3">
+              <div class="row">
+                <div class="col mb-3">
                   <div class="form-floating">
-                    <input type="file" class="form-control" id="image" />
-                    <label for="image">Upload Image</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="image"
+                      placeholder="Input Image"
+                    />
+                    <label for="image">Image</label>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -174,5 +316,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="assets/js/controller/blog.js"></script>
   </body>
 </html>

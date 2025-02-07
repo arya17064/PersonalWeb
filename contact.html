@@ -108,7 +108,11 @@
               >
                 Pesan berhasil dikirim!
               </div>
-              <form id="contactForm" action="#" method="POST">
+              <form
+                id="contactForm"
+                onsubmit="handleContactFormSubmit()"
+                method="POST"
+              >
                 <div class="mb-3">
                   <div class="form-floating">
                     <input
@@ -196,7 +200,7 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script src="assets/js/contact-form.js"></script>
+    <script src="assets/js/controller/contact-form.js"></script>
     <script>
       document
         .getElementById("contactForm")

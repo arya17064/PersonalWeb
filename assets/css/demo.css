@@ -105,3 +105,14 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+.cardshadow {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+  border-radius: 20px; /* Sudut membulat */
+  transition: all 0.3s ease-in-out;
+}
+
+.cardshadow:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Efek bayangan lebih kuat saat hover */
+  transform: translateY(-5px); /* Efek mengangkat kartu */
+}
