@@ -47,7 +47,6 @@ function deleteBlog() {
 function renderBlog() {
     let blogListElement = document.getElementById("blogList");
     
-    // Pastikan untuk menghapus isi sebelumnya agar tidak terjadi duplikasi
     blogListElement.innerHTML = firstBlogContent();
     
     blogs.forEach((blog, index) => {
