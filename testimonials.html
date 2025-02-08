@@ -13,7 +13,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Arya Project - Contact Me</title>
+    <title>Arya Project - Testimonials</title>
 
     <meta name="description" content="" />
 
@@ -49,7 +49,6 @@
       rel="stylesheet"
       href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"
     />
-
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -83,7 +82,7 @@
               <a class="nav-item nav-link" href="index.html">Home</a>
               <a class="nav-item nav-link" href="blog.html">Blog</a>
               <a class="nav-item nav-link active" href="testimonials.html"
-                >Testimonials</a
+                >testimonials</a
               >
             </div>
           </div>
@@ -96,86 +95,70 @@
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
-      <div
-        class="layout-container d-flex justify-content-center"
-        style="margin-top: 20px"
-      >
-        <div class="col-6">
-          <div class="card mb-4">
-            <h5 class="card-header">Get In Touch</h5>
-            <div class="card-body">
-              <div
-                id="notification"
-                class="alert alert-success d-none"
-                role="alert"
-              >
-                Pesan berhasil dikirim!
-              </div>
-              <form
-                id="contactForm"
-                onsubmit="handleContactFormSubmit()"
-                method="POST"
-              >
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Arya Afdhil Fikri"
-                    />
-                    <label for="name">Nama</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="aryaafdhil2002@gmail.com"
-                    />
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="subject"
-                      placeholder="text"
-                    />
-                    <label for="subject">subject</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <select class="form-select" id="skill">
-                      <option selected disabled>Select Skill</option>
-                      <option value="frontend">Frontend</option>
-                      <option value="backend">Backend</option>
-                    </select>
-                    <label for="skill">Skill</label>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="form-floating">
-                    <textarea
-                      class="form-control"
-                      id="message"
-                      placeholder="Tulis pesan Anda di sini"
-                    ></textarea>
-                    <label for="message">Message</label>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+      <div class="layout-container">
+        <div class="col card">
+          <div class="card-header">
+            <h1 class="text-center">My Testimonials</h1>
+            <h4 class="text-center">Rating By Star</h4>
+            <div class="demo-inline-spacing text-center align-items-center">
+              <!-- Basic Pagination -->
+              <nav aria-label="Page navigation d-flex justify-content-center">
+                <ul class="pagination d-flex justify-content-center">
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      href="javascript:void(0);"
+                      onclick="showAllTestimonials()"
+                      ><i class="tf-icons bx">All</i></a
+                    >
+                  </li>
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      onclick="filterTestimonialsByStar(1)"
+                      href="javascript:void(0);"
+                      >1&nbsp;<i class="tf-icons bx bx-star"></i
+                    ></a>
+                  </li>
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      onclick="filterTestimonialsByStar(2)"
+                      href="javascript:void(0);"
+                      >2&nbsp;<i class="tf-icons bx bx-star"></i
+                    ></a>
+                  </li>
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      onclick="filterTestimonialsByStar(3)"
+                      href="javascript:void(0);"
+                      >3&nbsp;<i class="tf-icons bx bx-star"></i
+                    ></a>
+                  </li>
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      onclick="filterTestimonialsByStar(4)"
+                      href="javascript:void(0);"
+                      >4&nbsp;<i class="tf-icons bx bx-star"></i
+                    ></a>
+                  </li>
+                  <li class="page-item first">
+                    <a
+                      class="page-link btn-danger"
+                      onclick="filterTestimonialsByStar(5)"
+                      href="javascript:void(0);"
+                      >5&nbsp;<i class="tf-icons bx bx-star"></i
+                    ></a>
+                  </li>
+                </ul>
+              </nav>
+              <!--/ Basic Pagination -->
             </div>
+          </div>
+          <div class="card-body">
+            <div id="testimonialsContainer" class="row mb-5"></div>
           </div>
         </div>
       </div>
@@ -202,12 +185,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="assets/js/controller/contact-form.js"></script>
-    <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", handleContactFormSubmit);
-    </script>
+    <script src="assets/js/controller/testimonial.js"></script>
   </body>
 </html>
