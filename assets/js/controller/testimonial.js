@@ -1,4 +1,4 @@
-let testimonials = [
+let dummyTestimonials = [
     {
         author: "Amir Muhammad",
         rating: 5,
@@ -41,7 +41,7 @@ const testimonialsHTML = (array) => {
                     <div class="justify-content-center align-items-center">
                         <img
                             class="img-fluid rounded-start"
-                            src="assets/img/${testimonial.image}"
+                            src="${testimonial.image}"
                             alt="Blog Image"
                             style="object-fit: cover; width: 100%; height: 200px;"
                         />
@@ -60,25 +60,67 @@ const testimonialsHTML = (array) => {
                 </div>
             </div>
         `
-    )
+    );
+};
+
+function fetchTestimonials() {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "https://api.npoint.io/20c6431a3f3c4d8f740c", true);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    console.log("Response Data:", response); // ✅ Data valid
+                    resolve(response.testimonials); // ✅ Kembalikan data yang benar
+                } catch (error) {
+                    console.error("JSON Parsing Error:", error);
+                    reject(error);
+                }
+            } else {
+                console.error("Error fetching data:", xhr.status);
+                reject(xhr.status);
+            }
+        };
+        xhr.onerror = () => reject("Network error");
+        xhr.send();
+    });
 }
 
-function showAllTestimonials() {
-    testimonialsContainer.innerHTML = testimonialsHTML(testimonials).join("")
+// Menampilkan semua testimoni
+async function showAllTestimonials() {
+    try {
+        const testimonials = await fetchTestimonials();
+        console.log("Testimoni dari API:", testimonials);
+        testimonialsContainer.innerHTML = testimonialsHTML(testimonials).join("");
+    } catch (error) {
+        console.error("Error menampilkan testimoni:", error);
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     showAllTestimonials();
 });
 
-function filterTestimonialsByStar(rating) {
-    const filteredTestimonials = testimonials.filter(
-        (testimonial) => (testimonial.rating === rating)
-    );
+// Filter berdasarkan rating
+async function filterTestimonialsByStar(rating) {
+    try {
+        const testimonials = await fetchTestimonials();
 
-    if (filteredTestimonials.length === 0) {
-        return (testimonialsContainer.innerHTML = `<h1 class="display-3 mb-0 text-center">Tidak Ada Data</h1>`);
+        const filteredTestimonials = testimonials.filter(
+            (testimonial) => testimonial.rating === rating
+        );
+
+        console.log("Filtered Testimonials:", filteredTestimonials);
+
+        if (filteredTestimonials.length === 0) {
+            testimonialsContainer.innerHTML = `<h1 class="display-3 mb-0 text-center">Tidak Ada Data</h1>`;
+        } else {
+            testimonialsContainer.innerHTML = testimonialsHTML(filteredTestimonials).join("");
+        }
+    } catch (error) {
+        console.error("Error filtering testimonials:", error);
     }
-
-    testimonialsContainer.innerHTML = testimonialsHTML(filteredTestimonials).join("")
 }

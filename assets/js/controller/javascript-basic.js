@@ -97,19 +97,19 @@
 // console.log(kapasitasBus);
 
 // operator aritmetika ==> + , - , * , / , %
-// let jumlah = 10 + 2;
+let jumlah = 10 + 2;
 // console.log(jumlah);
 
-// let kurang = 10 - 2;
+let kurang = 10 - 2;
 // console.log(kurang);
 
-// let kali = 10 * 2;
+let kali = 10 * 2;
 // console.log(kali);
 
-// let bagi = 10 / 2;
+let bagi = 10 / 2;
 // console.log(bagi);
 
-// let modulo = 25 % 3; // 25 dibagi 3 sisanya berapa? ===> 25 - 24 = 1
+let modulo = 25 % 3; // 25 dibagi 3 sisanya berapa? ===> 25 - 24 = 1
 // console.log(modulo);
 
 // operator logika/pembanding ===> AND , OR
@@ -143,17 +143,17 @@
 //   console.log("memenuhi syarat jumlah peserta");
 // }
 
-// let name = "Arya";
+// let name = "Leo";
 
-// function greetings(name, food) {
-//   console.log("selamat pagi!");
-//   console.log("Nama saya :", name);
-//   console.log("Saya suka makan :", food);
-// }
+function greetings(name, food) {
+  console.log("selamat pagi!");
+  console.log("Nama saya :", name);
+  console.log("Saya suka makan :", food);
+}
 
-// let name1 = "Arya";
-// let food1 = "Soto Ayam";
+let name1 = "Arya";
+let food1 = "Soto Ayam";
 
-// greetings(name1, food1);
+greetings(name1, food1);
 
 // PR => switch, for loop, while, do while
