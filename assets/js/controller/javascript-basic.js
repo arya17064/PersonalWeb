@@ -143,7 +143,7 @@ let modulo = 25 % 3; // 25 dibagi 3 sisanya berapa? ===> 25 - 24 = 1
 //   console.log("memenuhi syarat jumlah peserta");
 // }
 
-// let name = "Leo";
+let name = "Arya";
 
 function greetings(name, food) {
   console.log("selamat pagi!");

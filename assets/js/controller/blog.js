@@ -113,7 +113,7 @@ function firstBlogContent() {
             <div class="col-md-8">
                 <div class="card-body">
                 <h5 class="card-title">Pasar Coding di Indonesia</h5>
-                <p>30 Jan 2025 11:22 WIB | Alex Josua</p>
+                <p>30 Jan 2025 11:22 WIB |Arya</p>
                 <p class="card-text">
                     This is a wider card with supporting text below as a
                     natural lead-in to additional content. This content is a
