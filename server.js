@@ -1,48 +1,35 @@
 const express = require("express");
 const app = express();
-const port = 3089;
+const path = require("path");
 
 app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static("assets"));
+app.use(express.static("assets")); 
 
-// HOME
+// Definisikan route untuk setiap halaman
 app.get("/", (req, res) => {
-  res.render("index")
+  res.render("index");
 });
 
-// BLOG
-app.get("/", (req, res) => {
-  res.render("blog")
-});
-
-// CONTACT ME
-app.get("/", (req, res) => {
-  res.render("contact")
-});
-
-// TESTIMONIALS
-app.get("/", (req, res) => {
-  res.render("testimonials")
-});
-
-// MYPROJECT
-app.get("/", (req, res) => {
-  res.render("myproject")
-});
-
-// REQUEST PARAMS
-app.get("/about/:id", (req, res) => {
-  const id = req.params.id;
-  res.send(`Halo! Ini halaman tentang ${id}`);
-});
-
-// REQUEST QUERY
 app.get("/blog", (req, res) => {
-  const { title,author, year } = req.query;
-  res.send('Ini halaman blog ${title} dengan author ${author} dan tahun ${year}');
+  res.render("blog");
 });
 
-app.listen(port, () => {
-  console.log(`My Personal Web app listening on port ${port}`);
+app.get("/testimonials", (req, res) => {
+  res.render("testimonials");
+});
+
+app.get("/myproject", (req, res) => {
+  res.render("Myproject");
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+// Jalankan server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server berjalan di http://localhost:${PORT}`);
 });

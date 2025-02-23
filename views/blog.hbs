@@ -3,7 +3,7 @@
   class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="assets/"
+  data--path="/"
   data-template="vertical-menu-template-free"
 >
   <head>
@@ -18,7 +18,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/images.jpeg" />
+    <link rel="icon" type="image/x-icon" href="/img/images.jpeg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,35 +29,35 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
     <link
       rel="stylesheet"
-      href="assets/vendor/css/core.css"
+      href="/vendor/css/core.css"
       class="template-customizer-core-css"
     />
     <link
       rel="stylesheet"
-      href="assets/vendor/css/theme-default.css"
+      href="/vendor/css/theme-default.css"
       class="template-customizer-theme-css"
     />
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="/css/demo.css" />
 
     <!-- Vendors CSS -->
     <link
       rel="stylesheet"
-      href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"
+      href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"
     />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="assets/vendor/js/helpers.js"></script>
+    <script src="/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="assets/js/config.js"></script>
+    <script src="/js/config.js"></script>
   </head>
   <body>
     <div
@@ -85,7 +85,7 @@
       <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">
-            <img src="assets/img/images.jpeg" width="30" height="30" alt="" />
+            <img src="/img/images.jpeg" width="30" height="30" alt="" />
           </a>
           <button
             class="navbar-toggler"
@@ -100,17 +100,17 @@
           </button>
           <div class="collapse navbar-collapse" id="navbar-ex-2">
             <div class="navbar-nav me-auto">
-              <a class="nav-item nav-link" href="index.html">Home</a>
-              <a class="nav-item nav-link" href="blog.html">Blog</a>
-              <a class="nav-item nav-link" href="testimonials.html"
+              <a class="nav-item nav-link" href="index.hbs">Home</a>
+              <a class="nav-item nav-link" href="blog.hbs">Blog</a>
+              <a class="nav-item nav-link" href="testimonials.hbs"
                 >Testimonials</a
               >
-              <a class="nav-item nav-link active" href="Myproject.html"
+              <a class="nav-item nav-link active" href="Myproject.hbs"
                 >Myproject</a
               >
             </div>
           </div>
-          <a class="btn rounded-pill btn-danger" href="contact.html"
+          <a class="btn rounded-pill btn-danger" href="contact.hbs"
             >Contact Me</a
           >
         </div>
@@ -302,26 +302,26 @@
     </div>
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <!-- build:js /vendor/js/core.js -->
+    <script src="/vendor/libs/jquery/jquery.js"></script>
+    <script src="/vendor/libs/popper/popper.js"></script>
+    <script src="/vendor/js/bootstrap.js"></script>
+    <script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="/js/main.js"></script>
 
     <!-- Page JS -->
 
-    <script src="assets/js/form-basic-inputs.js"></script>
+    <script src="/js/form-basic-inputs.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="assets/js/controller/blog.js"></script>
+    <script src="/js/controller/blog.js"></script>
   </body>
 </html>
